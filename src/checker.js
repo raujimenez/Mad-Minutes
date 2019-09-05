@@ -1,4 +1,4 @@
-let OPERANDS = ['+', '-', '*', '/'];
+const OPERANDS = ['+', '-', '*', '/'];
 
 /**
  * Performs operation based on string operand
