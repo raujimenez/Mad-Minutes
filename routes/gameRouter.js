@@ -1,16 +1,14 @@
 const express = require('express');
 const gameRouter = express.Router();
 
-const checker = require('../src/checker');
-const problemGenerator = require('../src/problemGenerator');
+const checker = require('../middleware/checker');
+const problemGenerator = require('../middleware/problemGenerator');
 
 gameRouter.get('/', (req, res) => {
     const problem = problemGenerator('');
-    res.render('index.pug', {
-        firstNum : problem['firstNum'],
-        secondNum : problem['secondNum'],
-        operand : problem['operand']
-    });
+    res.sendFile('src/cardPopulate.js');
+    res.sendFile('src/submiteAnswerButton.js');
+    res.sendFile('html/index.html');
 });
 
 module.exports = gameRouter;

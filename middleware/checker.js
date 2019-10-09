@@ -1,13 +1,11 @@
-const OPERANDS = ['+', '-', '*', '/'];
-
 /**
  * Performs operation based on string operand
  * @param {int} firstNum
  * @param {int} secondNum 
  * @param {string} operand 
  */
-
- const checker = (firstNum, secondNum, operand) => {
+const checker = (firstNum, secondNum, operand) => {
+    const OPERANDS = ['+', '-', '*', '/'];
     if(OPERANDS.indexOf(operand) == -1)
         return null;
 

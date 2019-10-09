@@ -1,12 +1,12 @@
-const OPERANDS = ['+', '-', '*', '/'];
-const MAX = 10;
-
 /**
  * This takes in an operand and generates a problem. 
  * Returns an object with 3 attributes.
  * @param {String} operand 
  */
 const problemGenerator = (operand) => {
+    const OPERANDS = ['+', '-', '*', '/'];
+    const MAX = 10;
+    
     let sanatizedOperand = '';
     if(OPERANDS.indexOf(operand) == -1) 
         sanatizedOperand = OPERANDS[Math.floor(Math.random() * OPERANDS.length)];
