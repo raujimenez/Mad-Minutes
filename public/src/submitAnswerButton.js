@@ -1,15 +1,18 @@
 const submitAnswerButton = () => {
-    const firstNum = Number(document.getElementById('first-num').innerHTML);
-    const secondNum = Number(document.getElementById('second-num').innerHTML);
-    const operand = document.getElementById('operand').innerHTML;
+    const answerURL = '/solutions?id=' + '5d9e1e6b139d719b01d14fc2';
+    fetch(answerURL)
+    .then(response => response.json())
+    .then(answerSet => {
 
-    const correctAnswer = checker(firstNum, secondNum, operand);
+        const wrongAnswers = [];
 
-    const userResponse = Number(document.getElementById('userResponse').value);
-    console.log(userResponse);
-    console.log(correctAnswer);
-    if(userResponse == correctAnswer)
-        console.log('correct');
-    else 
-        console.log('false');
+        for(let i = 0; i < answerSet.length; i++) {
+            const userResponse = Number(document.getElementById('userResponse-' + String(i)).value);
+            const answerQuestion = answerSet[i];
+            if(userResponse != answerQuestion)
+                wrongAnswers.push(i);
+        }
+
+        console.log(wrongAnswers);
+    });
 }
