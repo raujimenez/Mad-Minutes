@@ -1,16 +1,27 @@
 const express = require('express');
 const answerRouter = express.Router();
 
-const dbClient = require('mongodb').MongoClient;
+const mongodb = require('mongodb');
+const dbClient = mongodb.MongoClient;
+
+const answerGenerator = require('../middleware/checker');
 
 answerRouter.get('/', (req, res) => {
     dbClient.connect('mongodb://localhost:27017/Mad-Minutes', (err, client) => {
         const db = client.db('Mad-Minutes');
-        const collection = db.collection('answer-sets');
+        const problemCollection = db.collection('problem-sets');
+        const id = String(req.query.id);
 
-        collection.findOne({problemSetID : req.query.problemSetID}, (err, item) => {
-            if (err) res.json({ });
-            else res.json(item);
+        problemCollection.find({_id : mongodb.ObjectId(id)}).toArray((error, items) => {
+            const problems = items[0].problems;
+            const answers = [];
+            for(let i = 0; i < problems.length; i++) {
+                const firstNum = Number(problems[i].firstNum);
+                const secondNum = Number(problems[i].secondNum);
+                const operand = problems[i].operand;
+                answers.push(answerGenerator(firstNum, secondNum, operand));
+            }
+            res.json(answers);
         });
 
         client.close();
