@@ -15,8 +15,8 @@ app.use(express.static('public/html'));
 app.use(express.static('public/src'));
 app.use(express.static('public/styles'));
 
+app.use('/', gameRouter);
 app.use('/set', gameGetter);
-app.use('/game', gameRouter);
 app.use('/solutions', answerRouter);
 app.use('/make-problem-set', problemRouter);
 
