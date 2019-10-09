@@ -1,5 +1,8 @@
 const showProblem = () => {
-    const gameURL = '/set?id=5d9e1e6b139d719b01d14fc2'
+    const urlParams = new URLSearchParams(window.location.search);
+    const parameterID = urlParams.get('id');
+    
+    const gameURL = '/set?id=' + parameterID;
     fetch(gameURL)
     .then(response => response.json())
     .then(problemSet => {

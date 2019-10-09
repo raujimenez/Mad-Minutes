@@ -1,5 +1,8 @@
 const submitAnswerButton = () => {
-    const answerURL = '/solutions?id=' + '5d9e1e6b139d719b01d14fc2';
+    const urlParams = new URLSearchParams(window.location.search);
+    const parameterID = urlParams.get('id');
+    
+    const answerURL = '/solutions?id=' + parameterID;
     fetch(answerURL)
     .then(response => response.json())
     .then(answerSet => {
