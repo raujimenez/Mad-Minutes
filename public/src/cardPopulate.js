@@ -1,5 +1,5 @@
 const showProblem = () => {
-    const gameURL = '/set'
+    const gameURL = '/set?id='
     fetch(gameURL)
     .then(response => response.json())
     .then(problemSet => {

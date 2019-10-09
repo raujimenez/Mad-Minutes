@@ -14,7 +14,7 @@ const problemGenerator = (operand) => {
         sanatizedOperand = operand;
     
     firstNumber = String(Math.floor(Math.random() * MAX));
-    secondNumber = String(Math.floor(Math.random() * MAX));
+    secondNumber = String(Math.floor(Math.random() * MAX) + 1);
 
     const problem =  {
         firstNum : firstNumber,

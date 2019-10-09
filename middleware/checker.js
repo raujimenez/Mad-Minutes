@@ -11,13 +11,13 @@ const checker = (firstNum, secondNum, operand) => {
 
     switch (operand) {
         case OPERANDS[0]:
-            return firstNum + secondNum;
+            return Math.floor(firstNum + secondNum);
         case OPERANDS[1]:
-            return firstNum - secondNum;
-        case OPERANDS[2]:
-            return firstNum * secondNum;
+            return Math.floor(firstNum - secondNum);
+        case OPERANDS[2]:   
+            return Math.floor(firstNum * secondNum);
         case OPERANDS[3]:
-            return firstNum / secondNum;
+            return Math.floor(firstNum / secondNum);
     }
 }
 
