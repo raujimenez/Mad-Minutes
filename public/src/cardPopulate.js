@@ -30,14 +30,21 @@ const showProblem = () => {
             operand.innerHTML = problem.operand;
 
             const problemField = document.getElementById('problem-card');
-            
+            problemField.setAttribute('class', 'card-columns');
+
             const problemFieldCard = document.createElement('div');
             problemFieldCard.setAttribute('id', ('card-' + String(i)))
 
-            problemFieldCard.appendChild(firstNumField);
-            problemFieldCard.appendChild(secondNumField);
-            problemFieldCard.appendChild(operand); 
-            problemFieldCard.appendChild(problemInput);
+            problemFieldCard.setAttribute('class', 'card');
+            const problemFieldCardBody = document.createElement('div');
+            problemFieldCardBody.setAttribute('class', 'card-body')
+
+            problemFieldCardBody.appendChild(firstNumField);
+            problemFieldCardBody.appendChild(secondNumField);
+            problemFieldCardBody.appendChild(operand); 
+            problemFieldCardBody.appendChild(problemInput);
+
+            problemFieldCard.append(problemFieldCardBody);
 
             problemField.appendChild(problemFieldCard);
         }
