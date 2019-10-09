@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const path = require('path');
 const express = require('express');
 const app = express();
@@ -7,7 +9,7 @@ const gameGetter = require('./public/api/gameGetter');
 const answerRouter = require('./routes/answerRouter');
 const problemRouter = require('./routes/problemRouter');
 
-const port = '3000';
+const port = process.env.PORT || '3000';
 
 app.use(express.static('public/html'));
 app.use(express.static('public/src'));

@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express');
 const answerRouter = express.Router();
 
@@ -7,7 +9,7 @@ const dbClient = mongodb.MongoClient;
 const answerGenerator = require('../middleware/checker');
 
 answerRouter.get('/', (req, res) => {
-    dbClient.connect('mongodb://localhost:27017/Mad-Minutes', (err, client) => {
+    dbClient.connect(process.env.DBCONNECTION, (err, client) => {
         const db = client.db('Mad-Minutes');
         const problemCollection = db.collection('problem-sets');
         const id = String(req.query.id);

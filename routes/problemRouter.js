@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express');
 const problemRouter = express.Router();
 
@@ -16,7 +18,7 @@ problemRouter.get('/', (req, res) => {
 
     const problems = problemGen();
     
-    dbClient.connect('mongodb://localhost:27017/Mad-Minutes', (err, client) => {
+    dbClient.connect(process.env.DBCONNECTION, (err, client) => {
         const db = client.db('Mad-Minutes');
         const problemCollection = db.collection('problem-sets');
         
