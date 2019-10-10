@@ -9,11 +9,14 @@ const showProblem = () => {
         const problems = problemSet[0].problems;
         
         for(let i = 0; i < problems.length; i++) {
-            const firstNumField = document.createElement('div');
-            const secondNumField = document.createElement('div');
-            const operand = document.createElement('div');
+            const firstNumField = document.createElement('span');
+            const secondNumField = document.createElement('span');
+            const operand = document.createElement('span');
+            
+            const cardFooter = document.createElement('div');
             const problemInput = document.createElement('input');
 
+            cardFooter.setAttribute('class', 'card-footer text-center border-secondary ');
 
             firstNumField.setAttribute('id', 'first-num-' + String(i));
             secondNumField.setAttribute('id', 'second-num-' + String(i));
@@ -22,6 +25,10 @@ const showProblem = () => {
             problemInput.setAttribute('type', 'text');
             problemInput.setAttribute('name', 'answer');
             problemInput.setAttribute('id', ('userResponse-' + String(i)));
+            problemInput.setAttribute('class', 'form-control mr-sm-2 mt-3');
+
+            firstNumField.setAttribute('class', 'mr-2');
+            secondNumField.setAttribute('class', 'ml-2');
 
 
             const problem = problems[i];
@@ -35,17 +42,18 @@ const showProblem = () => {
             const problemFieldCard = document.createElement('div');
             problemFieldCard.setAttribute('id', ('card-' + String(i)))
 
-            problemFieldCard.setAttribute('class', 'card');
+            problemFieldCard.setAttribute('class', 'card bg-dark text-light border-secondary');
             const problemFieldCardBody = document.createElement('div');
-            problemFieldCardBody.setAttribute('class', 'card-body')
+            problemFieldCardBody.setAttribute('class', 'card-body text-center display-4')
 
             problemFieldCardBody.appendChild(firstNumField);
-            problemFieldCardBody.appendChild(secondNumField);
             problemFieldCardBody.appendChild(operand); 
-            problemFieldCardBody.appendChild(problemInput);
+            problemFieldCardBody.appendChild(secondNumField);
+
+            cardFooter.appendChild(problemInput);
 
             problemFieldCard.append(problemFieldCardBody);
-
+            problemFieldCard.append(cardFooter);
             problemField.appendChild(problemFieldCard);
         }
 
