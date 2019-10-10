@@ -9,15 +9,18 @@ const answerGenerator = require('../middleware/checker');
 const dbClient = require('mongodb').MongoClient;
 
 problemRouter.get('/', (req, res) => {
-    const problemGen = _ => {
+    const problemGen = (size) => {
         const problemArray = [];
-        for(let i = 0; i < 20; i++) 
+        for(let i = 0; i < size; i++) 
             problemArray.push(problemGenerator(''));
         return problemArray;
     }
 
-    const problems = problemGen();
-    
+    let problems = problemGen(0);
+    if(req.query.size != undefined)
+        problems = problemGen(req.query.size);
+    else
+        problems = problemGen(30);
     dbClient.connect(process.env.DBCONNECTION, (err, client) => {
         const db = client.db('Mad-Minutes');
         const problemCollection = db.collection('problem-sets');

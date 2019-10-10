@@ -12,10 +12,20 @@ const problemGenerator = (operand) => {
         sanatizedOperand = OPERANDS[Math.floor(Math.random() * OPERANDS.length)];
     else 
         sanatizedOperand = operand;
-    
-    firstNumber = String(Math.floor(Math.random() * MAX));
-    secondNumber = String(Math.floor(Math.random() * MAX) + 1);
 
+    let firstNumber = Math.floor(Math.random() * MAX);
+    let secondNumber = Math.floor(Math.random() * MAX) + 1;
+    
+    if(sanatizedOperand == OPERANDS[3]){
+        do{
+            firstNumber = Math.floor(Math.random() * MAX);
+            secondNumber = Math.floor(Math.random() * MAX) + 1;
+        }
+        while(firstNumber % secondNumber != 0);
+    }
+    firstNumber = String(firstNumber);
+    secondNumber = String(secondNumber);
+    
     const problem =  {
         firstNum : firstNumber,
         secondNum : secondNumber,
