@@ -37,7 +37,6 @@ const showProblem = () => {
             operand.innerHTML = problem.operand;
 
             const problemField = document.getElementById('problem-card');
-            problemField.setAttribute('class', 'card-columns');
 
             const problemFieldCard = document.createElement('div');
             problemFieldCard.setAttribute('id', ('card-' + String(i)))
