@@ -20,6 +20,6 @@ const submitAnswerButton = () => {
             problemCard.removeChild(problemCard.lastChild);
         }
         problemCard.setAttribute('class', 'text-center display-4 text-success')
-        problemCard.innerHTML = String(wrongAnswers.length) + ' OUT OF ' + String(answerSet.length);
+        problemCard.innerHTML = String(answerSet.length - wrongAnswers.length) + ' OUT OF ' + String(answerSet.length);
     });
 }
