@@ -15,7 +15,11 @@ const submitAnswerButton = () => {
             if(userResponse != answerQuestion)
                 wrongAnswers.push(i);
         }
-
-        console.log(wrongAnswers);
+        const problemCard = document.getElementById('problem-card');
+        while(problemCard.hasChildNodes()){
+            problemCard.removeChild(problemCard.lastChild);
+        }
+        problemCard.setAttribute('class', 'text-center display-4 text-success')
+        problemCard.innerHTML = String(wrongAnswers.length) + ' OUT OF ' + String(answerSet.length);
     });
 }
