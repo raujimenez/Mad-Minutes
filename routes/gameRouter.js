@@ -8,6 +8,7 @@ gameRouter.get('/', (req, res) => {
     const problem = problemGenerator('');
     res.sendFile('src/cardPopulate.js');
     res.sendFile('src/submitAnswerButton.js');
+    res.sendFile('src/searchNewNav.js');
     res.sendFile('html/index.html');
 });
 
